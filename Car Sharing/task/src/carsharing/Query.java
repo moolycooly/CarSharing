@@ -13,7 +13,7 @@ public class Query {
         String dropTable = "DROP TABLE IF EXISTS COMPANY;";
         String dropTableCar = "DROP TABLE IF EXISTS CAR;";
         String dropTableCustomer = "DROP TABLE IF EXISTS CUSTOMER;";
-        String createTable = "CREATE TABLE COMPANY(ID INT AUTO_INCREMENT, NAME VARCHAR(20) NOT NULL UNIQUE, PRIMARY KEY (ID));";
+        String createTable = "CREATE TABLE IF NOT EXISTS COMPANY(ID INT AUTO_INCREMENT, NAME VARCHAR(20) NOT NULL UNIQUE, PRIMARY KEY (ID));";
         try {
 //            Database.statement.execute(dropTableCustomer);
 //            Database.statement.execute(dropTableCar);
@@ -26,7 +26,7 @@ public class Query {
         }
     }
     public static void createTableCar() {
-        String createTable = "CREATE TABLE CAR(ID INT AUTO_INCREMENT, NAME VARCHAR(20) NOT NULL UNIQUE, COMPANY_ID INT NOT NULL, FLAG INT DEFAULT 0, PRIMARY KEY (ID), FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID));";
+        String createTable = "CREATE TABLE IF NOT EXISTS CAR(ID INT AUTO_INCREMENT, NAME VARCHAR(20) NOT NULL UNIQUE, COMPANY_ID INT NOT NULL, FLAG INT DEFAULT 0, PRIMARY KEY (ID), FOREIGN KEY (COMPANY_ID) REFERENCES COMPANY(ID));";
         try {
             Database.statement.execute(createTable);
         }
@@ -35,7 +35,7 @@ public class Query {
         }
     }
     public static void createTableCustomer() {
-        String createTable = "CREATE TABLE CUSTOMER(ID INT AUTO_INCREMENT, NAME VARCHAR(20) NOT NULL UNIQUE, RENTED_CAR_ID INT, PRIMARY KEY (ID), FOREIGN KEY (RENTED_CAR_ID) REFERENCES CAR(ID));";
+        String createTable = "CREATE TABLE IF NOT EXISTS CUSTOMER(ID INT AUTO_INCREMENT, NAME VARCHAR(20) NOT NULL UNIQUE, RENTED_CAR_ID INT, PRIMARY KEY (ID), FOREIGN KEY (RENTED_CAR_ID) REFERENCES CAR(ID));";
         try {
             Database.statement.execute(createTable);
         }
