@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class Database {
     public static String dbName="carsharing";
     static final String JDBC_DRIVER = "org.h2.Driver";
-    static final String DB_URL = "jdbc:h2:file:../task/src/carsharing/db/carsharing";
+    static final String DB_URL = "jdbc:h2:file:../task/src/carsharing/db/" + dbName;
     public static  Statement statement ;
     public static  Connection connection;
     public static void createConnection(){
